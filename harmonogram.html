@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lochenzzo - Harmonogram</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:black;
+    color:white;
+    font-family:'Orbitron', sans-serif;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+
+h1{
+    margin-top:40px;
+    font-size:60px;
+
+    color:rgb(255,170,0);
+
+    text-shadow:
+    0 0 10px rgba(255,170,0,0.8),
+    0 0 20px rgba(255,140,0,0.8),
+    0 0 40px rgba(255,120,0,0.6);
+}
+
+.calendar{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(7, 1fr);
+
+    gap:20px;
+
+    width:90%;
+
+    margin:50px auto;
+}
+
+.day{
+
+    background:
+    rgba(255,170,0,0.08);
+
+    border:
+    1px solid rgba(255,170,0,0.3);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    min-height:130px;
+
+    box-shadow:
+    0 0 15px rgba(255,170,0,0.2);
+
+    transition:0.3s;
+}
+
+.day:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 25px rgba(255,170,0,0.5);
+}
+
+.stream{
+    color:rgb(255,190,50);
+    margin-top:10px;
+}
+
+.live{
+
+    color:red;
+
+    text-shadow:
+    0 0 10px red;
+}
+
+.back-button{
+
+    display:inline-block;
+
+    margin:40px;
+
+    padding:15px 35px;
+
+    background:rgb(255,220,120);
+
+    color:black;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    box-shadow:
+    0 0 10px rgba(255,200,0,0.8),
+    0 0 20px rgba(255,170,0,0.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>HARMONOGRAM STREAMÓW</h1>
+
+<div class="calendar">
+
+<div class="day">
+<h2>Pn</h2>
+<p>2</p>
+<div class="stream">
+19:00 Minecraft
+</div>
+</div>
+
+<div class="day">
+<h2>Wt</h2>
+<p>3</p>
+</div>
+
+<div class="day">
+<h2>Śr</h2>
+<p>4</p>
+<div class="stream">
+20:00 Horror Night
+</div>
+</div>
+
+<div class="day">
+<h2>Czw</h2>
+<p>5</p>
+</div>
+
+<div class="day">
+<h2>Pt</h2>
+<p>6</p>
+<div class="stream live">
+ LIVE 21:00
+</div>
+</div>
+
+<div class="day">
+<h2>Sob</h2>
+<p>7</p>
+<div class="stream">
+Turniej Community
+</div>
+</div>
+
+<div class="day">
+<h2>Nd</h2>
+<p>8</p>
+</div>
+
+</div>
+
+<a class="back-button" href="glowna.html">
+Powrót
+</a>
+
+</body>
+</html>
