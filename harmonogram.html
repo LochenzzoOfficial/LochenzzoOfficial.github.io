@@ -73,6 +73,96 @@ h1{
     0 0 25px rgba(255,170,0,0.5);
 }
 
+.calendar-header{
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:30px;
+
+margin-top:30px;
+}
+
+.calendar-header button{
+
+background:rgb(255,170,0);
+border:none;
+
+padding:12px 20px;
+
+font-size:22px;
+font-weight:bold;
+
+border-radius:12px;
+
+cursor:pointer;
+
+box-shadow:
+0 0 15px rgba(255,170,0,0.7);
+
+transition:0.3s;
+}
+
+.calendar-header button:hover{
+
+transform:scale(1.1);
+
+box-shadow:
+0 0 30px rgba(255,170,0,1);
+
+}
+
+.calendar{
+
+display:grid;
+
+grid-template-columns:
+repeat(7, 1fr);
+
+gap:20px;
+
+width:90%;
+
+margin:50px auto;
+}
+
+.day{
+
+background:
+rgba(255,170,0,0.08);
+
+border:
+1px solid rgba(255,170,0,0.3);
+
+border-radius:20px;
+
+padding:20px;
+
+min-height:120px;
+
+box-shadow:
+0 0 10px rgba(255,170,0,0.2);
+
+transition:0.3s;
+}
+
+.day:hover{
+
+transform:scale(1.05);
+
+box-shadow:
+0 0 25px rgba(255,170,0,0.6);
+
+}
+
+.stream{
+
+margin-top:10px;
+
+color:
+rgb(255,190,50);
+}
+    
 .stream{
     color:rgb(255,190,50);
     margin-top:10px;
@@ -115,61 +205,122 @@ h1{
 <body>
 
 <h1>HARMONOGRAM STREAMÓW</h1>
+<h1>HARMONOGRAM STREAMÓW</h1>
 
-<div class="calendar">
+<div class="calendar-header">
 
-<div class="day">
-<h2>Pn</h2>
-<p>2</p>
-<div class="stream">
+<button onclick="changeMonth(-1)">
+⬅
+</button>
 
-</div>
-</div>
+<h2 id="month-name">
+Maj 2026
+</h2>
 
-<div class="day">
-<h2>Wt</h2>
-<p>3</p>
-</div>
-
-<div class="day">
-<h2>Śr</h2>
-<p>4</p>
-<div class="stream">
-
-</div>
-</div>
-
-<div class="day">
-<h2>Czw</h2>
-<p>5</p>
-</div>
-
-<div class="day">
-<h2>Pt</h2>
-<p>6</p>
-<div class="stream live">
-
-</div>
-</div>
-
-<div class="day">
-<h2>Sob</h2>
-<p>7</p>
-<div class="stream">
-
-</div>
-</div>
-
-<div class="day">
-<h2>Nd</h2>
-<p>8</p>
-</div>
+<button onclick="changeMonth(1)">
+➡
+</button>
 
 </div>
 
-<a class="back-button" href="glowna.html">
-Powrót
+<div class="calendar" id="calendar">
+
+</div>
+
+<a class="powrot-button" href="glowna.html">
+Powrót do strony głównej
 </a>
+
+<script>
+
+const months = [
+"Styczeń",
+"Luty",
+"Marzec",
+"Kwiecień",
+"Maj",
+"Czerwiec",
+"Lipiec",
+"Sierpień",
+"Wrzesień",
+"Październik",
+"Listopad",
+"Grudzień"
+];
+
+let currentMonth = 4;
+let currentYear = 2026;
+
+function renderCalendar(){
+
+const calendar =
+document.getElementById("calendar");
+
+calendar.innerHTML = "";
+
+document.getElementById("month-name")
+.innerText =
+months[currentMonth] + " " + currentYear;
+
+const daysInMonth =
+new Date(
+currentYear,
+currentMonth + 1,
+0
+).getDate();
+
+for(let i = 1; i <= daysInMonth; i++){
+
+const day =
+document.createElement("div");
+
+day.classList.add("day");
+
+day.innerHTML = `
+<h3>${i}</h3>
+`;
+
+if(i === 6 || i === 14 || i === 21){
+
+day.innerHTML += `
+<div class="stream">
+🔴 LIVE 20:00
+</div>
+`;
+
+}
+
+calendar.appendChild(day);
+
+}
+
+}
+
+function changeMonth(step){
+
+currentMonth += step;
+
+if(currentMonth > 11){
+
+currentMonth = 0;
+currentYear++;
+
+}
+
+if(currentMonth < 0){
+
+currentMonth = 11;
+currentYear--;
+
+}
+
+renderCalendar();
+
+}
+
+renderCalendar();
+
+</script>
 
 </body>
 </html>
